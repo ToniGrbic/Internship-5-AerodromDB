@@ -16,12 +16,18 @@ CREATE TABLE Planes (
     AirportID INT REFERENCES Airports(AirportID),
 	MaxPassangerCapacity INT NOT NULL
 );
+<!-- ADDED -->
+ALTER TABLE Planes
+    ADD CONSTRAINT Check_working_status CHECK (
+        WorkingStatus IN ('Active', 'For Sale', 'Under Repair', 'Dismantled')
+    )
 
 CREATE TABLE Flights (
     FlightID SERIAL PRIMARY KEY,
     FlightCapacity INT,
     PlaneID INT REFERENCES Planes(PlaneID)
 );
+
 
 CREATE TABLE Users (
     UserID INT PRIMARY KEY,
@@ -49,6 +55,10 @@ CREATE TABLE FlightPersonnel (
     Age INT NOT NULL,
     FlightID INT REFERENCES Flights(FlightID)
 );
+
+ALTER TABLE FlightPersonnel
+	ADD COLUMN Gender VARCHAR(20),
+	ADD CONSTRAINT Check_Gender CHECK (Gender IN ('Male', 'Female'))
 
 CREATE TABLE Comments(
 	CommentID SERIAL PRIMARY KEY,
