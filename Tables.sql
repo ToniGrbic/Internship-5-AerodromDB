@@ -1,10 +1,17 @@
+CREATE TABLE Cities (
+    CityID SERIAL PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Longitude DOUBLE NOT NULL,
+    Latitude DOUBLE NOT NULL,
+    GeoLocation Point NOT NULL
+);
+
 CREATE TABLE Airports (
     AirportID SERIAL PRIMARY KEY,
-    Coodrinates POINT NOT NULL
     Name VARCHAR(50) NOT NULL,
-    City VARCHAR(50) NOT NULL,
     MaxRunwayCapacity INT NOT NULL,
-    MaxWarehouseCapacity INT NOT NULL
+    MaxWarehouseCapacity INT NOT NULL,
+    CityID INT REFERENCES Cities(CityID)
 );
 
 CREATE TABLE Planes (
