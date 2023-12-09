@@ -1,2 +1,4 @@
-ALTER TABLE FlightPersonnel
-	ADD CONSTRAINT Check_Gender CHECK (Gender IN ('Male', 'Female'))
+<!-- ispis imena i modela svih aviona s kapacitetom većim od 100 -->
+SELECT Name, Model FROM Planes
+WHERE MaxPassangerCapacity > 100;
+
