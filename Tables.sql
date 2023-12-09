@@ -16,10 +16,12 @@ CREATE TABLE Airports (
 
 CREATE TABLE Planes (
     PlaneID SERIAL PRIMARY KEY,
+    Model VARCHAR(50) NOT NULL,
+    Name VARCHAR(50) NOT NULL,
     WorkingStatus VARCHAR(50) NOT NULL,
 	LocationStatus VARCHAR(50) NOT NULL,
-	MaxPassangerCapacity INT NOT NULL
-    AirportID INT REFERENCES Airports(AirportID),
+	MaxPassangerCapacity INT NOT NULL,
+    AirportID INT REFERENCES Airports(AirportID)
 );
 
 ALTER TABLE Planes
@@ -35,15 +37,15 @@ CREATE TABLE Flights (
     FlightCapacity INT,
     DepartureDate DATE NOT NULL,
     FinalDestination VARCHAR(50) NOT NULL,
-    PlaneID INT REFERENCES Planes(PlaneID)
-    AirportID INT REFERENCES Airports(AirportID),
+    PlaneID INT REFERENCES Planes(PlaneID),
+    AirportID INT REFERENCES Airports(AirportID)
 );
 
 CREATE TABLE Users (
     UserID INT PRIMARY KEY,
     FirstName VARCHAR(50) NOT NULL,
     LastName VARCHAR(50) NOT NULL,
-    LoyaltyCardExpiryDate DATE,
+    LoyaltyCardExpiryDate DATE
 ); 
 
 CREATE TABLE Tickets (
