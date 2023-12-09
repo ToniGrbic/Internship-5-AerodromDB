@@ -9,12 +9,12 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+<!--create trigger-->
 CREATE TRIGGER enforce_flight_capacity
     BEFORE INSERT OR UPDATE
     ON Flights
     FOR EACH ROW
     EXECUTE FUNCTION check_flight_capacity();
-
 
 <!--Trigger to check if the loyalty card is valid-->
 CREATE OR REPLACE FUNCTION check_loyalty_card_function()
@@ -36,6 +36,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+<!--create trigger-->
 CREATE TRIGGER check_loyalty_card_trigger
 BEFORE INSERT OR UPDATE
 ON Users
