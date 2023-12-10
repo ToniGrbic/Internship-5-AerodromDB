@@ -50,7 +50,6 @@ CREATE TABLE Users (
 
 CREATE TABLE Tickets (
     TicketID SERIAL PRIMARY KEY,
-    FlightNumber VARCHAR(255) NOT NULL,
     SeatClass VARCHAR(1) NOT NULL,
     SeatNumber INT NOT NULL,
     TicketPrice REAL NOT NULL,
@@ -71,6 +70,7 @@ CREATE TABLE FlightPersonnel (
     Role VARCHAR(50) NOT NULL,
     Age INT NOT NULL,
     Gender VARCHAR(20) NOT NULL,
+    MonthlySalary INT NOT NULL,
     FlightID INT REFERENCES Flights(FlightID)
 );
 
