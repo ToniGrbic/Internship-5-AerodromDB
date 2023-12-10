@@ -1,3 +1,4 @@
+-- query 1
 CREATE TABLE Cities (
     CityID SERIAL PRIMARY KEY,
     Name VARCHAR(50) NOT NULL,
@@ -13,7 +14,7 @@ CREATE TABLE Airports (
     MaxWarehouseCapacity INT NOT NULL,
     CityID INT REFERENCES Cities(CityID)
 );
-
+-- query 2
 CREATE TABLE Planes (
     PlaneID SERIAL PRIMARY KEY,
     Model VARCHAR(50) NOT NULL,
@@ -32,6 +33,7 @@ ALTER TABLE Planes
         LocationStatus IN ('Runway', 'Warehouse', 'Air')
     )
 
+-- query 3
 CREATE TABLE Flights (
     FlightID SERIAL PRIMARY KEY,
     FlightCapacity INT,
@@ -47,7 +49,7 @@ CREATE TABLE Users (
     LastName VARCHAR(50) NOT NULL,
     LoyaltyCardExpiryDate DATE
 ); 
-
+-- query 4
 CREATE TABLE Tickets (
     TicketID SERIAL PRIMARY KEY,
     SeatClass VARCHAR(1) NOT NULL,
@@ -62,7 +64,8 @@ ALTER TABLE Tickets
     ADD CONSTRAINT Check_seat_class CHECK (
         SeatClass IN ('A', 'B')
     )
-
+    
+--query 5
 CREATE TABLE FlightPersonnel (
     PersonnelID SERIAL PRIMARY KEY,
     FirstName VARCHAR(255) NOT NULL,
@@ -83,12 +86,13 @@ ALTER TABLE FlightPersonnel
         ELSE true
         END
     );  
-
+-- query 6
 CREATE TABLE Reviews(
 	ReviewID SERIAL PRIMARY KEY,
 	CommentText TEXT,
 	Rating INT NOT NULL,
 	UserID INT REFERENCES Users(UserID)
+    FlightID INT REFERENCES Flights(FlightID)
 );
 
 ALTER TABLE Reviews
