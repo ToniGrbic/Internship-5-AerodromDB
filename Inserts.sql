@@ -118,9 +118,104 @@ INSERT INTO Planes (Model, Name, WorkingStatus, LocationStatus, MaxPassangerCapa
                      ('A220', 'Airbus', 'Under Repair', 'Warehouse', 100, 37),
                      ('A321', 'Airbus', 'Under Repair', 'Warehouse', 200, 38),
            
-INSERT INTO Flights (FlightCapacity, DepartureDate, FinalDestination, PlaneID) VALUES 
-                    (800, '2022-12-31', 'Split', 2);
-INSERT INTO Users (UserID, FirstName, LastName, LoyaltyCardExpiryDate) VALUES (1, 'FirstName', 'LastName', '2023-12-31');
-INSERT INTO Tickets (FlightNumber, SeatClass, SeatNumber, TicketPrice, PurchaseDate, UserID, FlightID) VALUES ('FL123', 'A', 1, 100.0, '2022-12-31', 1, 1);
-INSERT INTO FlightPersonnel (FirstName, LastName, Role, Age, Gender, FlightID) VALUES ('FirstName', 'LastName', 'Pilot', 30, 'Male', 1);
+INSERT INTO Flights (FlightCapacity, DepartureDate, FinalDestination, PlaneID, AirportID) VALUES 
+(100, '2022-12-31', 'Split', 2, 1),
+(200, '2023-12-12', 'Split', 2, 2),
+(100, '2023-12-31', 'Split', 2, 2),
+(200, '2023-12-12', 'Split', 2, 3),
+(100, '2023-12-30', 'Split', 2, 5)
+(100, '2022-11-30', 'Zagreb', 3, 2),
+(100, '2022-11-25', 'Osijek', 4, 3),
+(100, '2022-11-25', 'Dubrovnik', 5, 4),
+(100, '2022-11-25', 'Vienna', 6, 5),
+(100, '2022-11-25', 'London', 7, 6),
+(100, '2022-11-25', 'Paris', 8, 7),
+(100, '2022-11-25', 'Berlin', 9, 8),
+(100, '2022-12-25', 'Rome', 10, 9),
+(100, '2022-10-25', 'Madrid', 11, 10),
+(100, '2022-10-31', 'Athens', 10, 11),
+(100, '2022-10-31', 'Moscow', 13, 12),
+(100, '2022-10-31', 'New York', 14, 13),
+(100, '2022-12-31', 'Tokyo', 15, 14),
+(100, '2022-12-31', 'Beijing', 16, 15),
+(100, '2022-12-12', 'Sydney', 17, 16),
+(100, '2022-12-12', 'Cairo', 18, 17),
+(100, '2022-12-12', 'Cape Town', 19, 18),
+(100, '2022-12-12', 'Rio de Janeiro', 20, 19);
+                    
+INSERT INTO Users (UserID, FirstName, LastName, LoyaltyCardExpiryDate) VALUES 
+                  (1, 'Mike', 'Pen'),
+                  (2, 'John', 'Doe'),
+                  (3, 'Jane', 'Doe'),
+                  (4, 'Jack', 'Smith'),
+                  (5, 'Jill', 'Davis'),
+                  (6, 'Bob', 'Davis'),
+                  (7, 'Alice', 'Davis'),
+                  (8, 'Tom', 'Davis'),
+                  (9, 'Jerry', 'Davis'),
+                  (10, 'Rick', 'Smith'),
+                  (11, 'Morty', 'Smith'),
+                  (12, 'Beth', 'Smith'),
+                  (13, 'Summer', 'Smith'),
+                  (14, 'Jessica', 'White'),
+                  (15, 'Birdperson', 'White'),
+
+ -- SeatClass can only be 'A' or 'B' generate random rows for Tickets
+INSERT INTO Tickets (SeatClass, SeatNumber, TicketPrice, PurchaseDate, UserID, FlightID) VALUES
+                      ('A', 1, 100, '2022-12-31', 1, 1),
+                      ('A', 2, 100, '2022-12-31', 2, 1),
+                      ('A', 3, 100, '2022-12-31', 2, 1),
+                      ('A', 4, 100, '2022-12-31', 2, 1),
+                      ('A', 5, 100, '2022-12-31', 5, 1),
+                      ('A', 6, 100, '2022-12-31', 6, 1),
+                      ('A', 7, 100, '2022-12-31', 6, 1),
+                      ('A', 8, 100, '2022-12-31', 6, 1),
+                      ('A', 9, 100, '2022-12-31', 6, 1),
+                      ('A', 10, 100, '2022-12-12', 10, 1),
+                      ('B', 11, 100, '2022-12-12', 11, 1),
+                      ('B', 12, 100, '2022-12-12', 11, 1),
+                      ('B', 13, 100, '2022-12-12', 13, 1),
+                      ('B', 14, 100, '2022-12-12', 14, 1),
+                      ('B', 15, 100, '2022-12-12', 14, 1),
+                      ('B', 16, 100, '2022-12-12', 1, 2),
+                      ('B', 17, 100, '2022-12-12', 2, 2),
+                      ('B', 18, 100, '2022-12-12', 3, 2),
+                      ('B', 19, 100, '2022-12-12', 3, 2),
+                      ('B', 20, 100, '2022-12-12', 3, 2),
+                      ('B', 21, 100, '2022-12-31', 6, 2)
+                      
+INSERT INTO FlightPersonnel (FirstName, LastName, Role, Age, Gender, MonthlySalary, FlightID) VALUES 
+INSERT INTO FlightPersonnel (FirstName, LastName, Role, Age, Gender, MonthlySalary, FlightID) VALUES 
+('David', 'Beckham', 'Pilot', 45, 'Male', 5000, 1),
+('Emma', 'Watson', 'Navigator', 30, 'Female', 4000, 2),
+('Daniel', 'Radcliffe', 'Flight Attendant', 32, 'Male', 3000, 3),
+('Rupert', 'Grint', 'Flight Engineer', 33, 'Male', 3500, 4),
+('Tom', 'Hanks', 'Pilot', 55, 'Male', 5000, 5),
+('Julia', 'Roberts', 'Pilot', 53, 'Female', 5000, 6),
+('Leonardo', 'DiCaprio', 'Flight Attendant', 46, 'Male', 3000, 7),
+('Kate', 'Winslet', 'Flight Engineer', 45, 'Female', 3500, 8),
+('Brad', 'Pitt', 'Navigator', 57, 'Male', 4000, 9),
+('Angelina', 'Jolie', 'Pilot', 45, 'Female', 5000, 10),
+('Johnny', 'Depp', 'Flight Attendant', 57, 'Male', 3000, 11),
+('Keira', 'Knightley', 'Flight Engineer', 35, 'Female', 3500, 12),
+('Hugh', 'Jackman', 'Pilot', 52, 'Male', 5000, 13),
+('Halle', 'Berry', 'Navigator', 54, 'Female', 4000, 14),
+('Robert', 'Downey Jr.', 'Flight Attendant', 56, 'Male', 3000, 15),
+('Scarlett', 'Johansson', 'Flight Engineer', 36, 'Female', 3500, 16),
+('Chris', 'Hemsworth', 'Pilot', 38, 'Male', 5000, 17),
+('Natalie', 'Portman', 'Pilot', 39, 'Female', 5000, 18),
+('Mark', 'Ruffalo', 'Flight Attendant', 53, 'Male', 3000, 19),
+('Gwyneth', 'Paltrow', 'Flight Engineer', 48, 'Female', 3500, 20),
+('Chris', 'Evans', 'Navigator', 40, 'Male', 4000, 21),
+('Elizabeth', 'Olsen', 'Pilot', 32, 'Female', 5000, 22),
+('Paul', 'Rudd', 'Flight Attendant', 52, 'Male', 3000, 23),
+('Brie', 'Larson', 'Flight Engineer', 31, 'Female', 3500, 24),
+('Chadwick', 'Boseman', 'Pilot', 44, 'Male', 5000, 25),
+('Zoe', 'Saldana', 'Navigator', 42, 'Female', 4000, 26),
+('Chris', 'Pratt', 'Flight Attendant', 41, 'Male', 3000, 27),
+('Karen', 'Gillan', 'Flight Engineer', 34, 'Female', 3500, 28),
+('Dave', 'Bautista', 'Pilot', 52, 'Male', 5000, 29),
+('Pom', 'Klementieff', 'Pilot', 35, 'Female', 5000, 30);
+
+
 INSERT INTO Reviews (CommentText, Rating, UserID) VALUES ('Great flight!', 5, 1);
